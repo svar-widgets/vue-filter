@@ -58,6 +58,7 @@ To use each component, simply import the SVAR Vue Filter package and include the
 ```vue
 <script setup>
 import { FilterBuilder } from "@svar-ui/vue-filter";
+import "@svar-ui/vue-filter/all.css";
 
 const fields = [
     { id: "first_name", label: "Name", type: "text" },
