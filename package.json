@@ -1,6 +1,6 @@
 {
   "name": "@svar-ui/vue-filter",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "SVAR Vue Filter library",
   "productTag": "filter",
   "type": "module",
@@ -35,13 +35,13 @@
     "dist-full/index.css"
   ],
   "dependencies": {
-    "@svar-ui/lib-dom": "0.13.1",
+    "@svar-ui/lib-dom": "0.14.0",
     "@svar-ui/lib-vue": "1.1.0",
-    "@svar-ui/vue-core": "2.6.0",
+    "@svar-ui/vue-core": "2.6.1",
     "@svar-ui/lib-state": "1.9.7",
-    "@svar-ui/filter-locales": "2.6.0",
-    "@svar-ui/filter-store": "2.6.0",
-    "@svar-ui/vue-menu": "2.6.0"
+    "@svar-ui/filter-locales": "2.6.1",
+    "@svar-ui/filter-store": "2.6.1",
+    "@svar-ui/vue-menu": "2.6.1"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
