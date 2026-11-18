@@ -129,7 +129,10 @@ function getRule(filter) {
 
 function normalizeFields(fields) {
 	return fields.map(field => {
-		if (field.type === 'all' || field.type === 'dynamic') {
+		if (
+			typeof field !== 'string' &&
+			(field.type === 'all' || field.type === 'dynamic')
+		) {
 			return {
 				...field,
 				by: field.by.map(b => normalizeField(b)),
@@ -180,7 +183,7 @@ function getDynamicOptions(arr) {
 				<RichSelect
 					:value="filter.field"
 					:options="filter.optionsBy"
-					:onchange="({ value }) => updateFiltersField(value, i)"
+					:onchange="({ value }) => updateFiltersField(value)"
 				/>
 			</div>
 			<template v-if="filter.options">

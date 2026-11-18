@@ -46,17 +46,18 @@ export declare const FilterEditor: DefineComponent<{
 	onchange: (ev: { value: IFilter }) => void;
 }>;
 
+export interface IFilterBarGroup {
+	type: "all" | "dynamic";
+	by: (string | IFilterBarField)[];
+	label?: string;
+	placeholder?: string;
+	value?: AnyData;
+}
+
+export type TFilterBarField = string | IFilterBarField | IFilterBarGroup;
+
 export declare const FilterBar: DefineComponent<{
-	fields: (
-		| string
-		| IFilterBarField
-		| {
-				type: "all" | "dynamic";
-				by: (string | IFilterBarField)[];
-				label?: string;
-				placeholder?: string;
-		  }
-	)[];
+	fields: TFilterBarField[];
 	debounce?: number;
 	onchange?: (ev: { value: IFilterSet }) => void;
 }>;
@@ -70,10 +71,12 @@ export interface FilterQueryEvent {
 	endProgress: () => void;
 }
 
+export type TFilterQueryParse = "none" | "strict" | "allowFreeText";
+
 export declare const FilterQuery: DefineComponent<{
 	value?: string;
 	placeholder?: string;
-	parse?: "none" | "strict" | "allowFreeText";
+	parse?: TFilterQueryParse;
 	fields?: IField[];
 	options?: IDataHash<AnyData[]>;
 	onchange?: (ev: FilterQueryEvent) => void;
@@ -98,10 +101,11 @@ type RemoveHyphen<S extends string> = S extends `${infer Head}-${infer Tail}`
 
 type EventName<K extends string> = `on${RemoveHyphen<K>}`;
 
-export type FilterBuilderActions<TMethodsConfig extends Record<string, any>> = {
-	[K in keyof TMethodsConfig as EventName<K & string>]?: (
-		ev: TMethodsConfig[K]
-	) => void;
+// "add-rule" action -> onaddrule prop, etc.; other actions go to on<name> too
+export type FilterBuilderActions<
+	T extends Record<string, any> = TMethodsConfig,
+> = {
+	[K in keyof T as EventName<K & string>]?: (ev: T[K]) => void;
 } & {
-	[key: `on${string}`]: (ev?: any) => void;
+	[key: `on${string}`]: ((ev?: any) => void) | undefined;
 };

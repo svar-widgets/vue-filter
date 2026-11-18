@@ -159,7 +159,7 @@ function execSignal(signal) {
 const allSelected = ref();
 const visibleValues = ref([]);
 const rule = ref();
-const rules = ref();
+const rules = ref([]);
 
 function runSignal(s) {
 	if (s & ACTION_FIELD_CHANGE) {
@@ -365,7 +365,7 @@ const input = ref();
 watch([_field, input], ([fieldVal, inputVal]) => {
 	if (fieldVal && inputVal) {
 		setTimeout(() => {
-			inputVal.querySelector('input')?.focus();
+			input.value?.querySelector('input')?.focus();
 		}, 1);
 	}
 });

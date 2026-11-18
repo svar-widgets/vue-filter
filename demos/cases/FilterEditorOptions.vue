@@ -16,8 +16,8 @@ const options = getOptions(data, 'start', {
 // a converter for month names ( the "format" attribute )
 const numberToMonth = v => en.calendar.monthFull[v];
 
-const updateTextValue = ({ rule }) =>
-	(textValue.value = JSON.stringify(rule, null, 2));
+const updateTextValue = ({ value }) =>
+	(textValue.value = JSON.stringify(value, null, 2));
 </script>
 
 <template>

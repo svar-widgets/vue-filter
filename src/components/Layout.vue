@@ -92,7 +92,7 @@ const onshowmenu = ({ ev, id }) => {
 	<div :class="['wx-filter-builder', `wx-${type}`]">
 		<template v-if="type === 'list'">
 			<div :class="['wx-toolbar', `wx-${type}`]">
-				<Button type="primary" :onclick="addFilter">
+				<Button type="primary" :onclick="() => addFilter()">
 					{{ _('Add filter') }}
 				</Button>
 			</div>
@@ -105,7 +105,7 @@ const onshowmenu = ({ ev, id }) => {
 				</div>
 
 				<div class="wx-button">
-					<Button type="primary" :onclick="addFilter">
+					<Button type="primary" :onclick="() => addFilter()">
 						{{ _('Add filter') }}
 					</Button>
 				</div>
